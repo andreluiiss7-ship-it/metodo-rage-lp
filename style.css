@@ -176,7 +176,7 @@ body {
     padding-top: 80px;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/mentors.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/new_hero_bg.jpg');
     background-size: cover;
     background-position: center top;
 }
