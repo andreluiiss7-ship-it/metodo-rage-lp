@@ -63,6 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', showSticky, { passive: true });
     }
 
+    // Scroll depth tracking — dispara ViewContent quando lead engaja
+    let viewContentFired = false;
+    const fireViewContent = () => {
+        if (viewContentFired || typeof fbq === 'undefined') return;
+        const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (scrolled >= 0.5) {
+            fbq('track', 'ViewContent', { content_name: 'metodo-rage-lp', engagement: 'scroll_50' });
+            viewContentFired = true;
+            window.removeEventListener('scroll', fireViewContent);
+        }
+    };
+    window.addEventListener('scroll', fireViewContent, { passive: true });
+
+    // CTA tracking granular — identifica qual botão converteu
+    document.querySelectorAll('a[href*="form.respondi.app"]').forEach(cta => {
+        cta.addEventListener('click', () => {
+            if (typeof fbq === 'undefined') return;
+            let source = 'unknown';
+            if (cta.classList.contains('btn-sticky')) source = 'sticky_bar';
+            else if (cta.closest('.hero')) source = 'hero';
+            else if (cta.closest('.cta-section')) source = 'final_cta';
+            fbq('trackCustom', 'CTAClick', { source });
+        });
+    });
+
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
