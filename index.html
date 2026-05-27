@@ -12,7 +12,7 @@
     <link rel="dns-prefetch" href="https://connect.facebook.net">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <!-- Meta Pixel Code -->
@@ -100,17 +100,17 @@
             <div class="container">
                 <div class="proof-numbers">
                     <div class="proof-item">
-                        <span class="proof-number">R$20M+</span>
+                        <span class="proof-number" data-counter data-target="20" data-prefix="R$" data-suffix="M+">R$20M+</span>
                         <span class="proof-label">Faturados pelos mentores</span>
                     </div>
                     <div class="proof-divider"></div>
                     <div class="proof-item">
-                        <span class="proof-number">150+</span>
+                        <span class="proof-number" data-counter data-target="150" data-suffix="+">150+</span>
                         <span class="proof-label">Alunos ativos</span>
                     </div>
                     <div class="proof-divider"></div>
                     <div class="proof-item">
-                        <span class="proof-number">48h</span>
+                        <span class="proof-number" data-counter data-target="48" data-suffix="h">48h</span>
                         <span class="proof-label">Para as primeiras vendas</span>
                     </div>
                     <div class="proof-divider"></div>
@@ -125,7 +125,7 @@
         <!-- PROOF SECTION -->
         <section class="proof-section section-padding dark-section">
             <div class="container text-center">
-                <h2 class="section-title fade-in-up">Isso é o que <span class="text-gradient">Um Único Dia</span> Produz</h2>
+                <h2 class="section-title fade-in-up">Isso é o que <span class="text-accent">Um Único Dia</span> Produz</h2>
                 <p class="subtitle fade-in-up delay-1" style="margin-bottom: 40px;">Print real de um dia de operação. Não é exceção — é o padrão do método.</p>
                 <div class="proof-image-wrapper fade-in-up delay-1">
                     <img src="assets/dashboard.png" alt="Dashboard de resultados Método RAGE" loading="lazy" decoding="async" width="600" height="800">
@@ -136,7 +136,7 @@
         <!-- PARA QUEM É -->
         <section class="target-audience section-padding">
             <div class="container">
-                <h2 class="section-title text-center fade-in-up">Para <span class="text-gradient">Quem</span> É o Método RAGE?</h2>
+                <h2 class="section-title text-center fade-in-up">Para <span class="text-accent">Quem</span> É o Método RAGE?</h2>
 
                 <div class="cards-grid">
                     <div class="card glass-effect fade-in-up" style="animation-delay: 0.1s;">
@@ -179,7 +179,7 @@
             <div class="container">
                 <div class="not-for-wrapper">
                     <div class="not-for-header fade-in-up">
-                        <h2 class="section-title">Para Quem <span class="text-gradient">NÃO É</span></h2>
+                        <h2 class="section-title">Para Quem <span class="text-accent">NÃO É</span></h2>
                         <p class="subtitle">O método filtra quem entra. Leia com atenção antes de aplicar.</p>
                     </div>
                     <div class="not-for-list fade-in-up delay-1">
@@ -208,7 +208,7 @@
         <section class="reasons section-padding">
             <div class="container">
                 <div class="reasons-header text-center fade-in-up">
-                    <h2>Por Que a <span class="text-gradient">Engrenagem R.A.G.E.™</span> Funciona Quando o Resto Não Funcionou?</h2>
+                    <h2>Por Que a <span class="text-accent">Engrenagem R.A.G.E.™</span> Funciona Quando o Resto Não Funcionou?</h2>
                     <p class="subtitle">Não é mais um método de marketing. É um sistema de operação — testado em campo, validado em resultado.</p>
                 </div>
 
@@ -248,11 +248,74 @@
             </div>
         </section>
 
+        <!-- PROTOCOLO 90 DIAS -->
+        <section class="protocol section-padding">
+            <div class="container">
+                <div class="protocol-header text-center fade-in-up">
+                    <span class="eyebrow">PROTOCOLO DE 90 DIAS</span>
+                    <h2 class="section-title">Como Funciona <span class="text-accent">na Prática</span></h2>
+                    <p class="subtitle">Não é teoria. É um cronograma de execução com marcos claros — e o que esperar em cada um.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-rail" aria-hidden="true"></div>
+
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-marker">
+                            <span class="timeline-phase">FASE 01</span>
+                            <span class="timeline-days">Dias 1–15</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Instalação</h3>
+                            <p>Setup completo do sistema. Ofertas já validadas configuradas no seu ambiente. Primeiras campanhas calibradas e no ar.</p>
+                            <div class="timeline-outcome">
+                                <span class="outcome-label">Marco</span>
+                                <span class="outcome-text">Primeiras vendas em até 48 horas após o setup</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-marker">
+                            <span class="timeline-phase">FASE 02</span>
+                            <span class="timeline-days">Dias 16–45</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Validação</h3>
+                            <p>Otimização cirúrgica de criativos. Funil estruturado. Métricas de produto-mercado batendo. Caixa entra todos os dias.</p>
+                            <div class="timeline-outcome">
+                                <span class="outcome-label">Marco</span>
+                                <span class="outcome-text">Operação previsível de R$3k a R$5k por dia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-marker">
+                            <span class="timeline-phase">FASE 03</span>
+                            <span class="timeline-days">Dias 46–90</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Escala</h3>
+                            <p>Escala de tráfego com unit economics protegida. Margem otimizada. Expansão para mercados em dólar quando faz sentido.</p>
+                            <div class="timeline-outcome">
+                                <span class="outcome-label">Marco</span>
+                                <span class="outcome-text">R$10k a R$30k por dia em lucro bruto</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- TESTIMONIALS SECTION -->
         <section class="testimonials section-padding dark-section">
             <div class="container">
-                <h2 class="section-title text-center fade-in-up">O Que os <span class="text-gradient">Alunos Dizem</span></h2>
-                <p class="subtitle text-center fade-in-up delay-1" style="margin-bottom: 50px;">Pessoas reais que aplicaram o método e mudaram de patamar.</p>
+                <div class="testimonials-header text-center fade-in-up">
+                    <span class="eyebrow">RESULTADOS REAIS</span>
+                    <h2 class="section-title">O Que os <span class="text-accent">Alunos Dizem</span></h2>
+                    <p class="subtitle">18 depoimentos abaixo. Pessoas reais, operações reais, prints reais.</p>
+                </div>
 
                 <div class="swiper testimonials-slider fade-in-up delay-1">
                     <div class="swiper-wrapper testimonials-track">
@@ -291,7 +354,7 @@
                         </div>
                     </div>
                     <div class="mentors-info fade-in-right">
-                        <h2 class="section-title">Quem Vai Te Ensinar o <span class="text-gradient">Método RAGE</span></h2>
+                        <h2 class="section-title">Quem Vai Te Ensinar o <span class="text-accent">Método RAGE</span></h2>
                         <h3 class="mentors-names">André & Vinícius</h3>
                         <p>Não somos gurus de internet. Somos donos de negócio que faturam todos os dias — e decidimos parar de guardar o sistema para nós.</p>
                         <p><strong style="color: var(--text-primary);">R$20 milhões faturados juntos.</strong> Testamos tudo que existe no mercado digital antes de construir o RAGE. O que você vai receber é o destilado do que realmente funciona — sem as tentativas e erros que pagamos caro para aprender.</p>
@@ -316,7 +379,7 @@
         <section class="faq section-padding dark-section">
             <div class="container">
                 <div class="faq-header text-center fade-in-up">
-                    <h2 class="section-title">Perguntas <span class="text-gradient">Frequentes</span></h2>
+                    <h2 class="section-title">Perguntas <span class="text-accent">Frequentes</span></h2>
                     <p class="subtitle">Tire suas dúvidas antes de aplicar.</p>
                 </div>
                 <div class="faq-list fade-in-up delay-1">
@@ -382,7 +445,7 @@
         <section id="aplicacao" class="cta-section section-padding text-center">
             <div class="container">
                 <p class="cta-tag fade-in-up">O sistema está validado. A vaga é sua.</p>
-                <h2 class="section-title fade-in-up">Aplique Agora para o <span class="text-gradient">Ciclo 2026.</span></h2>
+                <h2 class="section-title fade-in-up">Aplique Agora para o <span class="text-accent">Ciclo 2026.</span></h2>
                 <p class="fade-in-up delay-1" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">Avaliamos cada candidato individualmente. Só aprovamos quem está pronto para executar.</p>
                 <a href="https://form.respondi.app/iYptOCgU" class="btn btn-primary mt-2 fade-in-up delay-1" onclick="fbq('track', 'Lead')">QUERO MINHA VAGA AGORA →</a>
                 <p class="mt-2 fade-in-up delay-1 cta-bottom-text">⚡ Vagas encerram quando o ciclo está completo. Sem exceções.</p>

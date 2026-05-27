@@ -49,6 +49,36 @@ body {
     animation: textShimmer 6s linear infinite;
 }
 
+/* Solid accent — usado nos h2 secundários (não no hero) */
+.text-accent {
+    color: var(--accent-gold-light);
+    font-weight: 600;
+}
+
+/* Eyebrow — small caps acima dos h2 das seções */
+.eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 16px;
+    position: relative;
+    padding: 0 20px;
+}
+.eyebrow::before, .eyebrow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 1px;
+    background: var(--accent-gold);
+    opacity: 0.5;
+}
+.eyebrow::before { left: -2px; }
+.eyebrow::after { right: -2px; }
+
 @keyframes textShimmer {
     to { background-position: 200% center; }
 }
@@ -262,9 +292,12 @@ body {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-icon {
@@ -336,6 +369,154 @@ body {
 
 .reason-content p {
     color: var(--text-secondary);
+}
+
+/* PROTOCOLO 90 DIAS — Timeline */
+.protocol {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #050505 100%);
+}
+
+.protocol-header {
+    max-width: 720px;
+    margin: 0 auto 80px auto;
+}
+
+.protocol-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    font-weight: 300;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-rail {
+    position: absolute;
+    left: 88px;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--accent-gold) 20%, var(--accent-gold) 80%, transparent 100%);
+    opacity: 0.35;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    margin-bottom: 56px;
+    position: relative;
+}
+
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-marker {
+    flex-shrink: 0;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 32px;
+}
+
+.timeline-marker::before {
+    content: '';
+    position: absolute;
+    left: 56px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15), 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: translateX(-50%);
+}
+
+.timeline-phase {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    margin-left: 80px;
+}
+
+.timeline-days {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-left: 80px;
+    line-height: 1;
+}
+
+.timeline-content {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.timeline-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.timeline-outcome {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px 10px 16px;
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 2px;
+}
+
+.outcome-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    padding-right: 14px;
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.outcome-text {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Testimonials header refactor */
+.testimonials-header {
+    max-width: 720px;
+    margin: 0 auto 56px auto;
+}
+
+.testimonials-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-top: 10px;
 }
 
 /* Testimonials Section */
@@ -463,8 +644,12 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    /* Removed heavy black gradient so the custom image is fully visible */
-    background: linear-gradient(0deg, rgba(5,5,5,0.7) 0%, transparent 20%);
+    /* Editorial overlay: vinheta sutil + tom dourado pra elevar a foto */
+    background:
+        radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.45) 100%),
+        linear-gradient(0deg, rgba(5,5,5,0.65) 0%, transparent 25%),
+        linear-gradient(180deg, rgba(155, 106, 5, 0.06) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 #mentors-img {
@@ -472,14 +657,14 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-    /* Softened the filter aggressively to preserve the clarity of the new image */
-    filter: grayscale(10%) contrast(1.05) brightness(1.05);
-    transition: filter 0.6s ease, transform 0.6s ease;
+    /* Tratamento editorial: contraste alto + dessaturação parcial pra elevar o tom */
+    filter: grayscale(45%) contrast(1.18) brightness(0.92) saturate(0.85);
+    transition: filter 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 #mentors-img:hover {
-    filter: grayscale(0%) contrast(1.1) brightness(1.1);
-    transform: scale(1.02);
+    filter: grayscale(15%) contrast(1.12) brightness(1) saturate(0.95);
+    transform: scale(1.015);
 }
 
 .mentors-info {
@@ -944,6 +1129,14 @@ footer p {
     .mentors-placeholder { width: 100%; max-width: 600px; margin: 0 auto; }
     .proof-item { padding: 0 28px; }
     .proof-number { font-size: 1.8rem; }
+
+    /* Timeline mobile-friendly */
+    .timeline-item { gap: 28px; }
+    .timeline-marker { width: 130px; padding-left: 0; }
+    .timeline-marker::before { left: 6px; }
+    .timeline-phase, .timeline-days { margin-left: 28px; }
+    .timeline-days { font-size: 1.35rem; }
+    .timeline-rail { left: 6px; }
 }
 
 @media (max-width: 768px) {
@@ -985,6 +1178,21 @@ footer p {
 
     /* Not-for mobile */
     .not-for-item { padding: 18px 20px; gap: 14px; }
+
+    /* Timeline mobile — stacked vertical */
+    .protocol-header { margin-bottom: 48px; }
+    .timeline-rail { display: none; }
+    .timeline-item { flex-direction: column; gap: 16px; margin-bottom: 40px; padding: 24px 22px; background: rgba(10,10,12,0.5); border: 1px solid var(--border-color); border-radius: 4px; }
+    .timeline-marker { width: 100%; padding-left: 0; flex-direction: row; align-items: baseline; gap: 12px; }
+    .timeline-marker::before { display: none; }
+    .timeline-phase, .timeline-days { margin-left: 0; }
+    .timeline-phase { font-size: 0.65rem; letter-spacing: 2px; }
+    .timeline-days { font-size: 1.1rem; }
+    .timeline-content h3 { font-size: 1.4rem; }
+    .timeline-content p { font-size: 0.98rem; }
+    .timeline-outcome { padding: 8px 14px 8px 12px; gap: 10px; }
+    .outcome-text { font-size: 0.85rem; }
+    .outcome-label { padding-right: 10px; font-size: 0.62rem; }
 
     /* FAQ mobile */
     .faq-question { font-size: 0.95rem; padding: 20px 0; }

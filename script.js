@@ -19,6 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right')
         .forEach(el => observer.observe(el));
 
+    // Number counter — anima R$20M, 150+, 48h quando entram em viewport
+    const animateCount = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1600;
+        const start = performance.now();
+        const tick = (now) => {
+            const elapsed = Math.min((now - start) / duration, 1);
+            // ease-out-quart
+            const eased = 1 - Math.pow(1 - elapsed, 4);
+            const value = Math.round(target * eased);
+            el.textContent = `${prefix}${value}${suffix}`;
+            if (elapsed < 1) requestAnimationFrame(tick);
+            else el.textContent = `${prefix}${target}${suffix}`;
+        };
+        requestAnimationFrame(tick);
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = '1';
+                animateCount(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
     // Vacancy meter — anima o fill quando entra em viewport
     const vacancyFill = document.querySelector('.vacancy-fill');
     if (vacancyFill) {
