@@ -19,6 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right')
         .forEach(el => observer.observe(el));
 
+    // Vacancy meter — anima o fill quando entra em viewport
+    const vacancyFill = document.querySelector('.vacancy-fill');
+    if (vacancyFill) {
+        const vacancyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    vacancyFill.classList.add('filled');
+                    vacancyObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        vacancyObserver.observe(vacancyFill);
+    }
+
     // Magnetic Buttons
     document.querySelectorAll('.btn-primary').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {

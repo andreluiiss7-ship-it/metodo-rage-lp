@@ -589,6 +589,101 @@ body {
     opacity: 0.7;
 }
 
+/* VACANCY METER */
+.vacancy-meter {
+    max-width: 480px;
+    margin: 0 auto 36px auto;
+    padding: 18px 22px;
+    background: rgba(10, 10, 12, 0.55);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 4px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.vacancy-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.vacancy-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent-gold-light);
+}
+
+.vacancy-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.7), 0 0 0 0 rgba(74, 222, 128, 0.5);
+    animation: pulseDot 2s ease-out infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 12px rgba(74, 222, 128, 0.7), 0 0 0 0 rgba(74, 222, 128, 0.5); }
+    70% { box-shadow: 0 0 12px rgba(74, 222, 128, 0.7), 0 0 0 12px rgba(74, 222, 128, 0); }
+    100% { box-shadow: 0 0 12px rgba(74, 222, 128, 0.7), 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+.vacancy-count {
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+.vacancy-count strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.vacancy-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.vacancy-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.vacancy-fill.filled {
+    width: 76.67%; /* 23/30 */
+}
+
+.vacancy-note {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.vacancy-note strong {
+    color: var(--accent-gold-light);
+    font-weight: 600;
+}
+
 /* SOCIAL PROOF BAR */
 .social-proof-bar {
     background: #030303;
@@ -853,30 +948,46 @@ footer p {
 
 @media (max-width: 768px) {
     .section-padding { padding: 60px 0; }
+    .hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
     .hero-title { font-size: 2.2rem; }
     .hero-subtitle { font-size: 1.05rem; margin-bottom: 30px; }
     .section-title { font-size: 2rem; margin-bottom: 16px; }
     .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .card { padding: 36px 28px; }
     .reason-item { flex-direction: column; gap: 15px; padding: 25px; }
     .reason-number { font-size: 2.5rem; }
     .stats-grid { grid-template-columns: 1fr; margin-top: 30px; padding-top: 30px; }
     .cta-section p { font-size: 1.05rem !important; }
 
-    /* Sticky bar mobile */
-    .sticky-bar-inner { gap: 12px; }
-    .sticky-bar-text { font-size: 0.8rem; text-align: center; }
+    /* CTA mobile — touch target 48px+ */
+    .btn { padding: 18px 28px; font-size: 0.92rem; letter-spacing: 1.2px; width: 100%; max-width: 360px; white-space: nowrap; }
 
-    /* Social proof bar mobile */
-    .proof-numbers { gap: 16px 0; }
-    .proof-item { padding: 12px 20px; }
+    /* Sticky bar mobile */
+    .sticky-bar { padding: 8px 16px; }
+    .sticky-bar-inner { gap: 10px; }
+    .sticky-bar-text { font-size: 0.78rem; text-align: center; line-height: 1.35; }
+    .btn-sticky { padding: 10px 18px; font-size: 0.72rem; letter-spacing: 1.2px; }
+
+    /* Vacancy meter mobile */
+    .vacancy-meter { padding: 16px 18px; margin-bottom: 28px; }
+    .vacancy-header { gap: 10px; }
+    .vacancy-status { font-size: 0.65rem; letter-spacing: 1.4px; }
+    .vacancy-count { font-size: 0.76rem; }
+    .vacancy-note { font-size: 0.72rem; }
+
+    /* Social proof bar mobile — 2x2 grid */
+    .social-proof-bar { padding: 24px 0; }
+    .proof-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 8px; }
+    .proof-item { padding: 0; }
     .proof-divider { display: none; }
-    .proof-number { font-size: 1.6rem; }
+    .proof-number { font-size: 1.55rem; margin-bottom: 4px; }
+    .proof-label { font-size: 0.7rem; letter-spacing: 1.2px; }
 
     /* Not-for mobile */
     .not-for-item { padding: 18px 20px; gap: 14px; }
 
     /* FAQ mobile */
-    .faq-question { font-size: 0.95rem; }
+    .faq-question { font-size: 0.95rem; padding: 20px 0; }
 
     /* Testimonials mobile */
     .testimonials-slider {
@@ -895,4 +1006,32 @@ footer p {
     .swiper-button-next { right: 24px; }
     .swiper-button-prev { left: 24px; }
     .swiper-button-next:after, .swiper-button-prev:after { font-size: 0.9rem !important; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .hero-title { font-size: 1.85rem; line-height: 1.15; }
+    .hero-subtitle { font-size: 0.98rem; margin-bottom: 28px; }
+    .badge { font-size: 0.72rem; padding: 5px 14px; letter-spacing: 1.5px; }
+    .section-title { font-size: 1.7rem; }
+    .section-padding { padding: 48px 0; }
+    .proof-numbers { gap: 12px 0; }
+    .proof-item { padding: 8px 16px; }
+    .proof-number { font-size: 1.45rem; }
+    .proof-label { font-size: 0.7rem; letter-spacing: 1.2px; }
+    .vacancy-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .vacancy-count { font-size: 0.74rem; }
+    .swiper-slide img { height: 200px; }
+    .mentors-names { font-size: 1.7rem; }
+    .mentors-info p { font-size: 1rem; }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .vacancy-fill { transition: none !important; }
 }
