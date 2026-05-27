@@ -1,69 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for anchor links
+
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 
     // Intersection Observer for fade-in animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: stop observing once animation is triggered
-                // observer.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-    }, observerOptions);
+    }, { threshold: 0.15 });
 
-    // Observe all elements with fade-in classes
-    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
-    animatedElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right')
+        .forEach(el => observer.observe(el));
 
-    // Magnetic Buttons & Glow Tracking
-    const magneticButtons = document.querySelectorAll('.btn-primary');
-    
-    magneticButtons.forEach(btn => {
+    // Magnetic Buttons
+    document.querySelectorAll('.btn-primary').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the element.
-            const y = e.clientY - rect.top;  // y position within the element.
-            
-            // Calculate magnet effect (pulling the button towards the cursor slightly)
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const distanceX = (x - centerX) * 0.15; // The multiplier changes the magnetic strength
-            const distanceY = (y - centerY) * 0.15;
-            
-            // Set CSS variables
-            btn.style.setProperty('--tx', `${distanceX}px`);
-            btn.style.setProperty('--ty', `${distanceY}px`);
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            btn.style.setProperty('--tx', `${(x - rect.width / 2) * 0.15}px`);
+            btn.style.setProperty('--ty', `${(y - rect.height / 2) * 0.15}px`);
             btn.style.setProperty('--mouse-x', `${x}px`);
             btn.style.setProperty('--mouse-y', `${y}px`);
         });
-
         btn.addEventListener('mouseleave', () => {
-            // Reset position when mouse leaves
             btn.style.setProperty('--tx', '0px');
             btn.style.setProperty('--ty', '0px');
             btn.style.setProperty('--mouse-x', '50%');
             btn.style.setProperty('--mouse-y', '50%');
         });
     });
+
+    // Sticky bar — aparece após scroll do hero
+    const stickyBar = document.getElementById('stickyBar');
+    const hero = document.querySelector('.hero');
+    if (stickyBar && hero) {
+        const showSticky = () => {
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            stickyBar.classList.toggle('visible', heroBottom < 0);
+        };
+        window.addEventListener('scroll', showSticky, { passive: true });
+    }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            // Fecha todos
+            document.querySelectorAll('.faq-question').forEach(b => {
+                b.setAttribute('aria-expanded', 'false');
+                b.nextElementSibling.classList.remove('open');
+            });
+            // Abre o clicado (se estava fechado)
+            if (!isOpen) {
+                btn.setAttribute('aria-expanded', 'true');
+                btn.nextElementSibling.classList.add('open');
+            }
+        });
+    });
+
 });
