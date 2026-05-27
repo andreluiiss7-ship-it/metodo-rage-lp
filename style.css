@@ -340,16 +340,31 @@ body {
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    padding: 40px;
-    background: linear-gradient(90deg, rgba(15,15,15,0.8) 0%, rgba(5,5,5,0) 100%);
-    border-left: 2px solid var(--accent-gold);
+    padding: 36px 40px;
+    background: rgba(15, 15, 15, 0.5);
+    border: 1px solid var(--border-color);
     border-radius: 2px;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease, border-color 0.4s ease;
+    position: relative;
+}
+
+.reason-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+    border-radius: 2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .reason-item:hover {
-    background: linear-gradient(90deg, rgba(25,25,25,0.9) 0%, rgba(10,10,10,0) 100%);
+    background: rgba(20, 20, 20, 0.7);
+    border-color: rgba(212, 175, 55, 0.18);
 }
+
+.reason-item:hover::before { opacity: 1; }
 
 .reason-number {
     font-family: var(--font-heading);
@@ -369,6 +384,57 @@ body {
 
 .reason-content p {
     color: var(--text-secondary);
+}
+
+/* ONLYNESS STATEMENT — Marty Neumeier "only" positioning */
+.onlyness {
+    background: linear-gradient(180deg, #030303 0%, var(--bg-dark) 100%);
+    padding: 90px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.onlyness-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.onlyness-mark {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: var(--accent-gold);
+    opacity: 0.25;
+    line-height: 1;
+    display: block;
+    margin-bottom: -16px;
+    font-style: italic;
+}
+
+.onlyness-text {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 1.85rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+    margin-bottom: 24px;
+}
+
+.onlyness-text strong {
+    color: var(--accent-gold-light);
+    font-weight: 500;
+}
+
+.onlyness-signature {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 /* PROTOCOLO 90 DIAS — Timeline */
@@ -706,6 +772,50 @@ body {
     color: var(--accent-gold);
 }
 
+/* Mentor credentials — track record concreto */
+.mentor-credentials {
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.credential-marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    flex-shrink: 0;
+}
+
+.credential-text {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+}
+
+.mentors-pledge {
+    margin-top: 24px !important;
+    font-size: 1.08rem !important;
+    color: var(--text-primary) !important;
+}
+
+.mentors-pledge strong {
+    color: var(--accent-gold-light);
+    font-weight: 500;
+}
+
 /* STICKY BAR */
 .sticky-bar {
     position: fixed;
@@ -957,11 +1067,15 @@ body {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    padding: 24px 28px;
-    background: rgba(10,5,5,0.6);
-    border: 1px solid rgba(255,60,60,0.08);
-    border-left: 2px solid rgba(200,50,50,0.4);
+    padding: 22px 28px;
+    background: rgba(10, 5, 5, 0.55);
+    border: 1px solid rgba(200, 50, 50, 0.16);
     border-radius: 2px;
+    transition: border-color 0.3s ease;
+}
+
+.not-for-item:hover {
+    border-color: rgba(200, 50, 50, 0.32);
 }
 
 .not-icon {
@@ -1178,6 +1292,17 @@ footer p {
 
     /* Not-for mobile */
     .not-for-item { padding: 18px 20px; gap: 14px; }
+
+    /* Onlyness mobile */
+    .onlyness { padding: 56px 0; }
+    .onlyness-text { font-size: 1.35rem; line-height: 1.4; }
+    .onlyness-mark { font-size: 3.5rem; }
+    .onlyness-signature { font-size: 0.72rem; letter-spacing: 1.5px; }
+
+    /* Mentor credentials mobile */
+    .mentor-credentials { gap: 12px; padding: 20px 0; margin: 24px 0; }
+    .credential-text { font-size: 0.95rem; }
+    .mentors-pledge { font-size: 1rem !important; }
 
     /* Timeline mobile — stacked vertical */
     .protocol-header { margin-bottom: 48px; }
