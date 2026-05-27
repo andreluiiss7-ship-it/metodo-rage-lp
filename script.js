@@ -83,15 +83,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sticky bar — aparece após scroll do hero
+    // Sticky bar — smart: aparece após hero, esconde scroll down, reaparece scroll up
     const stickyBar = document.getElementById('stickyBar');
     const hero = document.querySelector('.hero');
     if (stickyBar && hero) {
-        const showSticky = () => {
+        let lastY = window.scrollY;
+        let ticking = false;
+        const updateSticky = () => {
+            const currentY = window.scrollY;
             const heroBottom = hero.getBoundingClientRect().bottom;
-            stickyBar.classList.toggle('visible', heroBottom < 0);
+            const pastHero = heroBottom < 0;
+            const scrollingUp = currentY < lastY - 4; // threshold pra evitar jitter
+            if (!pastHero) {
+                stickyBar.classList.remove('visible');
+            } else if (scrollingUp) {
+                stickyBar.classList.add('visible');
+            } else if (currentY > lastY + 4) {
+                stickyBar.classList.remove('visible');
+            }
+            lastY = currentY;
+            ticking = false;
         };
-        window.addEventListener('scroll', showSticky, { passive: true });
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateSticky);
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
     // Scroll depth tracking — dispara ViewContent quando lead engaja

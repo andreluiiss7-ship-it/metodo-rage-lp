@@ -10,9 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://form.respondi.app">
     <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="preload" as="image" href="assets/mentors.png" fetchpriority="low">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <!-- Meta Pixel Code -->
@@ -43,6 +44,7 @@
     ></script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Pular para conteúdo</a>
     <div class="noise-overlay"></div>
     <div class="glow-bg"></div>
 
@@ -62,7 +64,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <!-- HERO SECTION -->
         <section class="hero">
             <div class="container hero-container">
@@ -330,29 +332,30 @@
                     <p class="subtitle">18 depoimentos abaixo. Pessoas reais, operações reais, prints reais.</p>
                 </div>
 
-                <div class="swiper testimonials-slider fade-in-up delay-1">
+                <div class="swiper testimonials-slider fade-in-up delay-1" aria-label="Carrossel de depoimentos de alunos">
                     <div class="swiper-wrapper testimonials-track">
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_1249.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_12664.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_15001.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_15068.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_17388.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_19628.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_19788.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_21737.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_23392.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_24747.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_25934.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_28199.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_29261.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_30681.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_32257.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_367.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_3819.jpg" alt="Depoimento"></div>
-                        <div class="swiper-slide"><img loading="lazy" decoding="async" src="assets/depoimentos/depoimento_5914.jpg" alt="Depoimento"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_1249.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_12664.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_15001.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_15068.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_17388.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_19628.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_19788.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_21737.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_23392.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_24747.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_25934.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_28199.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_29261.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_30681.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_32257.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_367.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_3819.jpg" alt="Depoimento de aluno do Método RAGE"></div>
+                        <div class="swiper-slide"><img loading="lazy" decoding="async" width="360" height="640" src="assets/depoimentos/depoimento_5914.jpg" alt="Depoimento de aluno do Método RAGE"></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next" role="button" aria-label="Próximo depoimento" tabindex="0"></div>
+                    <div class="swiper-button-prev" role="button" aria-label="Depoimento anterior" tabindex="0"></div>
+                    <div class="swiper-pagination" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
@@ -485,16 +488,33 @@
         loop: true,
         centeredSlides: true,
         grabCursor: true,
-        spaceBetween: 20,
+        spaceBetween: 32,
         slidesPerView: "auto",
         initialSlide: 1,
+        speed: 600,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 5,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        a11y: {
+          prevSlideMessage: 'Depoimento anterior',
+          nextSlideMessage: 'Próximo depoimento',
+          paginationBulletMessage: 'Ir para o depoimento {{index}}',
+        },
         autoplay: {
             delay: 3500,
             disableOnInteraction: true,
+            pauseOnMouseEnter: true,
         },
       });
     </script>

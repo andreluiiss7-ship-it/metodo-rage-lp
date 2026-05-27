@@ -20,6 +20,10 @@
     --font-main: 'Jost', sans-serif;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
@@ -28,6 +32,30 @@ body {
     overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Skip link — acessibilidade teclado */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 8px;
+    background: var(--accent-gold-light);
+    color: #000;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 8px;
+    outline: 2px solid #FFF;
+    outline-offset: 2px;
 }
 
 .container {
@@ -625,24 +653,75 @@ body {
     width: auto !important; /* Allow slides to dictate their own width */
     display: flex;
     justify-content: center;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.6; /* Unfocused slides will be slightly dimmed */
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0.35; /* Slides laterais visualmente subordinados */
+    transform: scale(0.88);
 }
 
-/* Swiper active slide is centered and fully opaque */
+/* Swiper active slide is centered, full opacity and full scale */
 .swiper-slide-active {
     opacity: 1;
+    transform: scale(1);
     z-index: 2;
 }
 
+/* Slide imediatamente adjacente: estado intermediário */
+.swiper-slide-prev,
+.swiper-slide-next {
+    opacity: 0.6;
+    transform: scale(0.94);
+}
+
 .swiper-slide img {
-    height: 380px;
+    height: 520px;
     width: auto;
     object-fit: contain;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    /* Borda gradient gold sutil — não chapado */
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    /* Sombra multi-layer dramática */
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.02) inset;
     background: #000;
+    transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Ambient glow gold no slide ativo */
+.swiper-slide-active img {
+    border-color: rgba(212, 175, 55, 0.32);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.7),
+        0 40px 80px rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(212, 175, 55, 0.08),
+        0 0 0 1px rgba(212, 175, 55, 0.12) inset;
+}
+
+/* Pagination dots */
+.swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    background: rgba(212, 175, 55, 0.25) !important;
+    opacity: 1 !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease;
+    margin: 0 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-gold-light) !important;
+    width: 24px !important;
+    border-radius: 4px !important;
 }
 
 /* Swiper Navigation Customization */
@@ -731,6 +810,26 @@ body {
 #mentors-img:hover {
     filter: grayscale(15%) contrast(1.12) brightness(1) saturate(0.95);
     transform: scale(1.015);
+}
+
+/* Touch devices: aplicar estado "claro" como padrão — evita sticky hover bug em mobile */
+@media (hover: none) and (pointer: coarse) {
+    #mentors-img {
+        filter: grayscale(10%) contrast(1.08) brightness(1.02) saturate(0.95);
+    }
+    #mentors-img:hover {
+        transform: none;
+    }
+}
+
+/* Fallback viewport-based: garante que telas pequenas vejam a foto clara */
+@media (max-width: 992px) {
+    #mentors-img {
+        filter: grayscale(10%) contrast(1.08) brightness(1.02) saturate(0.95);
+    }
+    #mentors-img:hover {
+        transform: none;
+    }
 }
 
 .mentors-info {
@@ -1324,12 +1423,12 @@ footer p {
 
     /* Testimonials mobile */
     .testimonials-slider {
-        padding: 10px 0 20px 0;
+        padding: 20px 0 30px 0;
         width: auto !important;
         margin-left: -24px !important;
         margin-right: -24px !important;
     }
-    .swiper-slide img { height: 250px; }
+    .swiper-slide img { height: 400px; }
     .testimonials-slider::before, .testimonials-slider::after { width: 15px; }
     .swiper-button-next, .swiper-button-prev {
         width: 38px; height: 38px;
@@ -1339,6 +1438,7 @@ footer p {
     .swiper-button-next { right: 24px; }
     .swiper-button-prev { left: 24px; }
     .swiper-button-next:after, .swiper-button-prev:after { font-size: 0.9rem !important; }
+    .swiper-pagination { margin-top: 24px; }
 }
 
 @media (max-width: 480px) {
@@ -1354,7 +1454,7 @@ footer p {
     .proof-label { font-size: 0.7rem; letter-spacing: 1.2px; }
     .vacancy-header { flex-direction: column; align-items: flex-start; gap: 6px; }
     .vacancy-count { font-size: 0.74rem; }
-    .swiper-slide img { height: 200px; }
+    .swiper-slide img { height: 320px; }
     .mentors-names { font-size: 1.7rem; }
     .mentors-info p { font-size: 1rem; }
 }
